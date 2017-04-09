@@ -2,6 +2,7 @@
   * Created by shexiaogui on 08/04/17.
   */
 package week1
+
 trait Tree {
 }
 
