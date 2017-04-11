@@ -48,13 +48,13 @@ abstract class QuickCheckHeap extends Properties("Heap") with IntHeap {
   }
   
   property("sorted") = forAll{list: List[Int] =>
-          if(!list.isEmpty){
-            var h = empty
-            val sortedList = list.sorted(ord = Ordering[Int])
-            for (x <- list) h = insert(x, h)
-            val resultList = offer(h)
-            sortedList.length == resultList.length && sortedList.zip(resultList).forall( pair => pair._1 == pair._2)
-          }else true
+    if(!list.isEmpty){
+      var h = empty
+      val sortedList = list.sorted(ord = Ordering[Int])
+      for (x <- list) h = insert(x, h)
+      val resultList = offer(h)
+      sortedList.length == resultList.length && sortedList.zip(resultList).forall( pair => pair._1 == pair._2)
+    }else true
   }
   
   def offer(heap: H): List[Int]  =  isEmpty(heap) match {
