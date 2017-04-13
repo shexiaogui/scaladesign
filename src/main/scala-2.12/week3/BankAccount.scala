@@ -1,17 +1,22 @@
 package week3
 
+import week4.frp.Var
+
+
 /**
   * Created by shexiaogui on 09/04/17.
   */
 class BankAccount {
-  private var balance = 0
+  val balance = Var(0)
   
   def deposit(amount: Int): Unit = {
-    if(amount > 0) balance = balance + amount
+    if(amount > 0) {val b = balance(); balance() = b + amount}
   }
   def withdraw(amount: Int): Int = {
-    if(amount >= 0 && balance  >= amount){
-      balance = balance - amount; balance
+    if(amount >= 0 && balance()  >= amount){
+      val b = balance()
+      balance() = b - amount
+      balance()
     }
     else throw new Error("no enough balance in account")
   }
